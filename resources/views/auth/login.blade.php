@@ -1,56 +1,80 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.auth')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('auth')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+	<form
+		class="form w-100"
+		novalidate="novalidate"
+		action="{{ route('login') }}"
+		method="POST"
+	>
+	@csrf
+		<div class="text-center mb-10">
+			<h1 class="text-dark mb-3">
+				Efetuar login
+			</h1>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+			<div class="text-gray-400 fw-bold fs-4">
+				Novo por aqui?
+				<a href="{{ route('register') }}" class="link-primary fw-bolder">
+					Crie sua conta
+				</a>
+			</div>
+		</div>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+		<div class="fv-row mb-10">
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+			<label class="form-label fs-6 fw-bolder text-dark">
+				E-mail
+			</label>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+			<input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
+		</div>
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+		<div class="fv-row mb-10">
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
+			<div class="d-flex flex-stack mb-2">
 
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+				<label class="form-label fw-bolder text-dark fs-6 mb-0">
+					Senha
+				</label>
+
+				<a href="{{ route('password.request') }}" class="link-primary fs-6 fw-bolder">
+					Recuperar senha
+				</a>
+
+			</div>
+
+			<input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
+
+		</div>
+
+		<div class="text-center">
+
+			<button type="submit" class="btn btn-lg btn-primary w-100 mb-5">
+				Entrar
+			</button>
+
+			{{--<div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
+
+			<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+				<img alt="Logo" src="/metronic8/demo1/assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />
+				Continue with Google
+			</a>
+
+			<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+				<img alt="Logo" src="/metronic8/demo1/assets/media/svg/brand-logos/facebook-4.svg" class="h-20px me-3" />
+				Continue with Facebook
+			</a>
+
+			<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100">
+				<img alt="Logo" src="/metronic8/demo1/assets/media/svg/brand-logos/apple-black.svg" class="h-20px me-3" />
+				Continue with Apple
+			</a>--}}
+
+		</div>
+
+	</form>
+
+@endsection
