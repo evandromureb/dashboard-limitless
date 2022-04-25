@@ -2,8 +2,13 @@
 
 @section('auth')
 
-<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="/metronic8/demo1/../demo1/index.html" action="#">
-
+<form
+	class="form w-100"
+	novalidate="novalidate"
+	action="{{ route('login') }}"
+	method="POST"
+>
+@csrf
 	<div class="text-center mb-10">
 		<h1 class="text-dark mb-3">
 			Efetuar login
