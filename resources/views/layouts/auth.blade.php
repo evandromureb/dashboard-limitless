@@ -15,6 +15,7 @@
     <link href="{{ asset('auth/css/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('auth/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 
+
 </head>
 
 <body id="kt_body" class="bg-body">
@@ -50,8 +51,8 @@
 </div>
 
 
-<script src="/metronic8/demo1/assets/plugins/global/plugins.bundle.js"></script>
-<script src="/metronic8/demo1/assets/js/scripts.bundle.js"></script>
+<script src="{{ asset('auth/js/plugins.bundle.js') }}"></script>
+<script src="{{ asset('auth/js/scripts.bundle.js') }}"></script>
 
 </body>
 
