@@ -2,7 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
+    <title>
+		{{ config('app.name') }}
+	</title>
     <meta charset="utf-8" />
     <meta name="description" content="{{ url('') }}" />
     <meta name="keywords" content="{{ url('') }}" />

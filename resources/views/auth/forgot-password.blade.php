@@ -1,36 +1,65 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.auth')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+@section('auth')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+	<form
+		class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
+		novalidate="novalidate"
+		action="{{ route('password.email') }}"
+		method="POST"
+	>
+	@csrf
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+		<div class="text-center mb-10">
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+			<h1 class="text-dark mb-3">
+				Esqueceu a senha?
+			</h1>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+			<div class="text-gray-400 fw-bold fs-4">
+				Insira seu e-mail para receber um link para redefinir sua senha.
+			</div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+			<div class="alert bg-light-primary d-flex align-content-end">
+				<span class="fw-bold ">
+					Foi enviado um link para redefinir sua senha.
+				</span>
+			</div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+		</div>
+
+		<div class="fv-row mb-10 fv-plugins-icon-container">
+
+			<label class="form-label fw-bolder text-gray-900 fs-6">
+				E-mail
+			</label>
+
+			<input
+				class="form-control form-control-solid"
+				type="text"
+				placeholder=""
+				name="email"
+				autocomplete="off"
+			>
+
+			<div class="fv-plugins-message-container invalid-feedback">
+				Error
+			</div>
+		</div>
+
+		<div class="d-flex flex-wrap justify-content-center pb-lg-0">
+			<button type="submit" id="kt_password_reset_submit" class="btn btn-lg btn-primary fw-bolder me-4">
+				Enviar
+			</button>
+
+			<a href="{{ route('login') }}"
+			   class="btn btn-lg btn-light-primary fw-bolder"
+			>
+				Cancelar
+			</a>
+
+		</div>
+
+	</form>
+
+@endsection
