@@ -7,16 +7,23 @@
 			<div class="sidebar-section-body">
 				<div class="media">
 					<a href="{{ url('') }}" class="mr-3">
-						<img src="{{ asset('images/svg/avatars/004-boy-1.svg') }}"
-							 class="rounded-circle" alt="">
+						@if(Auth::user()->avatar)
+							<img src="{{ asset('storage/avatar/default.png') }}" class="rounded-circle" alt="">
+						@else
+							<img src="{{ asset('images/svg/avatars/004-boy-1.svg') }}" class="rounded-circle" alt="">
+						@endif
 					</a>
 
 					<div class="media-body">
 						<div class="font-weight-semibold">
-							Nome completo
+							{{ auth()->user()->name }}
 						</div>
 						<div class="font-size-sm line-height-sm opacity-50">
-							Administrador
+							@if(auth()->user()->is_admin)
+								Administrator
+							@else
+								Usuário
+							@endif
 						</div>
 					</div>
 

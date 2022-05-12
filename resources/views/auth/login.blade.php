@@ -20,6 +20,15 @@
 					Crie sua conta
 				</a>
 			</div>
+
+			@if(session('status'))
+				<br>
+				<div class="alert bg-light-primary d-flex align-content-end">
+					<span class="fw-bold ">
+						{{ session('status') }}
+					</span>
+				</div>
+			@endif
 		</div>
 
 		<div class="fv-row mb-10">
