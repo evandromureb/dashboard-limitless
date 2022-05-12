@@ -35,15 +35,18 @@
 			</label>
 
 			<input
-				class="form-control form-control-lg form-control-solid is-invalid bg-light-danger"
+				class="form-control form-control-lg form-control-solid @error('name') is-invalid bg-light-danger @enderror"
 				type="text"
 				placeholder=""
-				name="nome"
+				name="name"
 				autocomplete="off"
+				value="{{ old('name') }}"
 			>
-			<div class="fv-plugins-message-container invalid-feedback">
-				Error
-			</div>
+			@error('name')
+				<div class="fv-plugins-message-container invalid-feedback">
+					{{ $message }}
+				</div>
+			@enderror
 
 		</div>
 
@@ -54,15 +57,18 @@
 			</label>
 
 			<input
-				class="form-control form-control-lg form-control-solid bg-light-danger"
+				class="form-control form-control-lg form-control-solid @error('email') is-invalid bg-light-danger @enderror"
 				type="text"
 				placeholder=""
 				name="email"
 				autocomplete="off"
+				value="{{ old('email') }}"
 			>
-			<div class="fv-plugins-message-container invalid-feedback">
-				Error
-			</div>
+			@error('email')
+				<div class="fv-plugins-message-container invalid-feedback">
+					{{ $message }}
+				</div>
+			@enderror
 
 		</div>
 
@@ -77,11 +83,12 @@
 				<div class="position-relative mb-3">
 
 					<input
-						class="form-control form-control-lg form-control-solid"
+						class="form-control form-control-lg form-control-solid @error('password') bg-light-danger @enderror"
 						type="password"
 						placeholder=""
 						name="password"
 						autocomplete="off"
+						maxlength="16"
 					>
 					<span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
 						  data-kt-password-meter-control="visibility"
@@ -100,10 +107,11 @@
 				</div>
 
 			</div>
-
-			<div class="fv-plugins-message-container invalid-feedback">
-				Error
-			</div>
+			@error('password')
+				<div class="fv-plugins-message-container invalid-feedback">
+					{{ $message }}
+				</div>
+			@enderror
 		</div>
 
 		<div class="fv-row mb-5 fv-plugins-icon-container">
@@ -116,20 +124,23 @@
 				class="form-control form-control-lg form-control-solid"
 				type="password"
 				placeholder=""
-				name="confirm-password"
+				name="password_confirmation"
 				autocomplete="off"
+				maxlength="16"
 			>
-
-			<div class="fv-plugins-message-container invalid-feedback">
-				Error
-			</div>
 
 		</div>
 
 		<div class="fv-row mb-10 fv-plugins-icon-container">
 			<label class="form-check form-check-custom form-check-solid form-check-inline">
 
-				<input class="form-check-input" type="checkbox" name="toc" value="1">
+				<input
+					class="form-check-input"
+					type="checkbox"
+					name="accepted"
+					value="@if(old('accepted')) {{ old('accepted') }} @else 1 @endif"
+					@if(old('accepted')) checked @endif
+				>
 
 				<span class="form-check-label fw-bold text-gray-700 fs-6">
 					Eu concordo com os
@@ -139,9 +150,11 @@
 				</span>
 			</label>
 
-			<div class="fv-plugins-message-container invalid-feedback">
-				Error
-			</div>
+			@error('accepted')
+				<div class="fv-plugins-message-container invalid-feedback">
+					{{ $message }}
+				</div>
+			@enderror
 
 		</div>
 

@@ -20,11 +20,13 @@
 				Insira seu e-mail para receber um link para redefinir sua senha.
 			</div>
 
-			<div class="alert bg-light-primary d-flex align-content-end">
-				<span class="fw-bold ">
-					Foi enviado um link para redefinir sua senha.
-				</span>
-			</div>
+			@if(session('status'))
+				<div class="alert bg-light-primary d-flex align-content-end">
+					<span class="fw-bold ">
+						Foi enviado um link para redefinir sua senha.
+					</span>
+				</div>
+			@endif
 
 		</div>
 
@@ -35,16 +37,17 @@
 			</label>
 
 			<input
-				class="form-control form-control-solid"
+				class="form-control form-control-solid @error('email') is-invalid bg-light-danger @enderror"
 				type="text"
-				placeholder=""
 				name="email"
 				autocomplete="off"
+				value="{{ old('email') }}"
 			>
-
-			<div class="fv-plugins-message-container invalid-feedback">
-				Error
-			</div>
+			@error('email')
+				<div class="fv-plugins-message-container invalid-feedback">
+					{{ $message }}
+				</div>
+			@enderror
 		</div>
 
 		<div class="d-flex flex-wrap justify-content-center pb-lg-0">

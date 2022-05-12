@@ -33,9 +33,10 @@
 
 			<div class="fs-5">
 				<span class="fw-bold text-gray-700">
-					Não recebeu a mensagem?</span>
-				<button type="submit" class="link-primary fw-bolder">
-					Reenviar e-mail
+
+				</span>
+				<button type="submit" class="btn btn-color-gray-500 btn-sm fw-bolder">
+					Não recebeu a mensagem? Reenviar e-mail
 				</button>
 			</div>
 

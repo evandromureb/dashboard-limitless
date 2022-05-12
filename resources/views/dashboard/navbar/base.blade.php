@@ -23,9 +23,14 @@
 			<a href="#"
 			   class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle d-inline-flex align-items-center h-100"
 			   data-toggle="dropdown">
-				<img src="{{ asset('images/svg/avatars/004-boy-1.svg') }}" class="rounded-pill mr-lg-2" height="34" alt="">
+				@if(Auth::user()->avatar)
+					<img src="{{ asset('storage/avatar/default.png') }}" class="rounded-pill mr-lg-2" height="34" alt="">
+				@else
+					<img src="{{ asset('images/svg/avatars/004-boy-1.svg') }}" class="rounded-pill mr-lg-2" height="34" alt="">
+				@endif
+
 				<span class="d-none d-lg-inline-block">
-					Nome completo do usuário
+					{{ auth()->user()->name }}
 				</span>
 			</a>
 
