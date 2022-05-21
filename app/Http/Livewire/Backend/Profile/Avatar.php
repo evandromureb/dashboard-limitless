@@ -23,11 +23,11 @@ class Avatar extends Component
 		$name = auth()->user()->id . "." . $this->avatar->getClientOriginalExtension();
 		$this->avatar->storeAs('public/avatar', $name);
 
-		$user = User::find(Auth::user()->id);
-		$user->avatar = "avatar/" . $name;
-		$user->save();
+		Auth::user()->update([
+			'avatar' => "avatar/" . $name
+		]);
 
-		$this->alert('success',
+		$this->alert('info',
 	'A sua imagem do perfil foi alterada com sucesso', [
 			'position' => 'top-end',
 			'showCancelButton' => true,
