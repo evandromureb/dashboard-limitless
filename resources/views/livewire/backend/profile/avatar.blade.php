@@ -4,7 +4,7 @@
 
 	<div class="card border-secondary">
 		<div class="card-header bg-light border-secondary header-elements-inline">
-			<h6 class="card-title">
+			<h6 class="card-title font-weight-bold">
 				<i class="icon-image2 mr-2 text-gray-500"></i>
 				Foto do perfil
 			</h6>
@@ -23,7 +23,7 @@
 
 			<span class="d-block text-muted">
 
-				<input type="file" class="form form-control p-1 @error('avatar') is-invalid @enderror" wire:model="avatar">
+				<input type="file" class="form form-control p-1 font-weight-bold @error('avatar') is-invalid @enderror" wire:model="avatar">
 
 				@error('avatar')
 					<label id="basic-error" class="validation-invalid-label float-left" for="basic">

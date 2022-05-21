@@ -6,7 +6,6 @@ use Illuminate\Contracts\Validation\Rule;
 
 class FullNameRule implements Rule
 {
-
     public function __construct()
     {
         //
@@ -15,11 +14,11 @@ class FullNameRule implements Rule
     public function passes($attribute, $value)
     {
         $data = explode(' ', $value);
-		if (count($data) > 1) {
-			return true;
-		} else {
-			return false;
-		}
+        if (count($data) > 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function message()

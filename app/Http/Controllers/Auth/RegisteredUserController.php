@@ -14,7 +14,6 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
-
     public function create()
     {
         return view('auth.register');
@@ -22,7 +21,6 @@ class RegisteredUserController extends Controller
 
     public function store(RegisterRequest $request)
     {
-
         $user = User::create($request->validated());
 
         event(new Registered($user));

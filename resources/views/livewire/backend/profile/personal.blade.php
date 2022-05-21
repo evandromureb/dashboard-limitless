@@ -4,13 +4,13 @@
 
 		<div class="card border-secondary">
 			<div class="card-header bg-light border-secondary header-elements-inline">
-				<h6 class="card-title">
+				<h6 class="card-title font-weight-bold">
 					<i class="icon-user mr-2 text-gray-500"></i>
 					Dados pessoais
 				</h6>
 			</div>
 
-			<div class="card-body text-center">
+			<div class="card-body font-weight-bold">
 
 				<div class="form-group row">
 					<label class="col-form-label col-lg-3">
