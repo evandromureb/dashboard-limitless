@@ -23,10 +23,10 @@
 			<a href="#"
 			   class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle d-inline-flex align-items-center h-100"
 			   data-toggle="dropdown">
-				@if(Auth::user()->avatar)
+				@if(Auth::user()->avatar == null)
 					<img src="{{ asset('storage/avatar/default.png') }}" class="rounded-pill mr-lg-2" height="34" alt="">
 				@else
-					<img src="{{ asset('images/svg/avatars/004-boy-1.svg') }}" class="rounded-pill mr-lg-2" height="34" alt="">
+					<img src="{{ asset('storage/' . auth()->user()->avatar) }}" class="rounded-pill mr-lg-2" height="34" alt="">
 				@endif
 
 				<span class="d-none d-lg-inline-block">
