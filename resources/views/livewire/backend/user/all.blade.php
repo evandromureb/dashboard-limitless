@@ -286,6 +286,192 @@
 
 	{{--End modal show--}}
 
+	{{--Start modal register--}}
+
+	<div wire:ignore.self class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" data-backdrop="static" aria-hidden="true">
+
+		<form wire:submit.prevent="store">
+
+			<div class="modal-dialog modal-dialog-centered " role="document">
+				<div class="modal-content">
+
+					<div class="modal-header bg-dark-100">
+						<h6 class="modal-title font-weight-semibold">
+							Cadastrar novo usuário
+						</h6>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+
+					<div class="modal-body">
+
+						@if ($errors->any())
+							<div class="alert alert-danger border-0 alert-dismissible">
+								<button type="button" class="close" data-dismiss="alert"><span>×</span></button>
+								<ul>
+									@foreach ($errors->all() as $error)
+										<li>{{ $error }}</li>
+									@endforeach
+								</ul>
+							</div>
+						@endif
+
+						<div class="form-group row">
+							<div class="col-sm-3">
+								<label class="col-form-label col-sm- font-weight-semibold">
+									Nome completo
+								</label>
+							</div>
+							<div class="col-sm-9">
+								<input
+									wire:model.lazy="name"
+									type="text"
+									class="form-control @error('name') is-invalid bg-danger-100 @enderror"
+									value="{{ $name }}"
+								>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-3">
+								<label class="col-form-label col-sm- font-weight-semibold">
+									E-mail
+								</label>
+							</div>
+							<div class="col-sm-9">
+								<input
+									wire:model.lazy="email"
+									type="text"
+									class="form-control @error('email') is-invalid bg-danger-100 @enderror"
+									value="{{ $email }}"
+								>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-3">
+								<label class="col-form-label col-sm- font-weight-semibold">
+									Administrador
+								</label>
+							</div>
+							<div class="col-sm-9">
+
+								<div class="border p-3 rounded">
+									<div class="custom-control custom-radio custom-control-inline">
+										<input
+											type="radio"
+											class="custom-control-input"
+											id="is_admin_1"
+											wire:model="is_admin"
+											@if($is_admin) checked="" @endif
+											value="1"
+										>
+										<label class="custom-control-label text-uppercase" for="is_admin_1">
+											Sim
+										</label>
+									</div>
+
+									<div class="custom-control custom-radio custom-control-inline">
+										<input
+											type="radio"
+											class="custom-control-input"
+											id="is_admin_0"
+											wire:model="is_admin"
+											@if(!$is_admin) checked="" @endif
+											value="0"
+										>
+										<label class="custom-control-label text-uppercase" for="is_admin_0">
+											Não
+										</label>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-3">
+								<label class="col-form-label col-sm- font-weight-semibold">
+									Ativo
+								</label>
+							</div>
+							<div class="col-sm-9">
+
+								<div class="border p-3 rounded">
+									<div class="custom-control custom-radio custom-control-inline">
+										<input
+											type="radio"
+											class="custom-control-input"
+											id="is_active_1"
+											wire:model="is_active"
+											@if($is_active) checked="" @endif
+											value="1"
+										>
+										<label class="custom-control-label text-uppercase" for="is_active_1">
+											Sim
+										</label>
+									</div>
+
+									<div class="custom-control custom-radio custom-control-inline">
+										<input
+											type="radio"
+											class="custom-control-input"
+											id="is_active_0"
+											wire:model="is_active"
+											@if(!$is_active) checked="" @endif
+											value="0"
+										>
+										<label class="custom-control-label text-uppercase" for="is_active_0">
+											Não
+										</label>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-3">
+								<label class="col-form-label col-sm- font-weight-semibold">
+									Senha
+								</label>
+							</div>
+							<div class="col-sm-9">
+								<input
+									wire:model.lazy="password"
+									type="password"
+									class="form-control @error('password') is-invalid bg-danger-100 @enderror"
+									maxlength="16"
+								>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="modal-footer bg-dark-100">
+
+						<button
+							wire:click.prevent="store()"
+							class="btn btn-info text-uppercase float-left"
+						>
+							Salvar
+						</button>
+
+						<button type="button" class="btn btn-secondary text-uppercase float-right" data-dismiss="modal">
+							Fechar
+						</button>
+					</div>
+
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+	{{--End modal register--}}
+
 	{{--Start modal edit--}}
 
 	<div wire:ignore.self class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" data-backdrop="static" aria-hidden="true">
@@ -733,6 +919,9 @@
 		});
 		window.livewire.on('userRestore', () => {
 			$('#restoreModal').modal('hide');
+		});
+		window.livewire.on('userRegister', () => {
+			$('#registerModal').modal('hide');
 		});
 	</script>
 @endsection

@@ -36,14 +36,18 @@
 
 			<div class="dropdown-menu dropdown-menu-right">
 
-				<a href="javascript:" class="dropdown-item">
+				<a href="{{ route('profile')}}" class="dropdown-item">
 					<i class="icon-user-plus"></i>
 					Meu perfil
 				</a>
 
 				<div class="dropdown-divider"></div>
 
-				<a href="javascript:" class="dropdown-item">
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					@csrf
+				</form>
+
+				<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item">
 					<i class="icon-switch2"></i>
 					Sair
 				</a>

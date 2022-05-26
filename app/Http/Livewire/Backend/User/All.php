@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Backend\User;
 
 use App\Models\User;
 use App\Rules\FullNameRule;
+use Illuminate\Validation\Rules\Password;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -22,6 +23,7 @@ class All extends Component
 	public $created_at;
 	public $updated_at;
 	public $deleted_at;
+	public $password;
 
 	protected $paginationTheme = 'bootstrap';
 
@@ -32,12 +34,35 @@ class All extends Component
 
 	public function register()
 	{
-		$this->resetFields();
+		$this->reset();
+		$this->is_admin = false;
+		$this->is_active = true;
 	}
 
 	public function store()
 	{
-		
+		$validatedData = $this->validate([
+			'name' => ['required', 'string', 'max:200', new FullNameRule()],
+			'email' => ['required', 'email', 'unique:users'],
+			'password' => ['required', 'max:16', Password::min(8)
+				->letters()
+				->mixedCase()
+				->numbers()
+				->symbols()
+				->uncompromised()
+			],
+			'is_active' => ['required', 'boolean'],
+			'is_admin' => ['required', 'boolean'],
+		]);
+
+		User::create($validatedData);
+
+		$this->resetFields();
+
+		$this->emit('userRegister');
+
+		$this->alertMessage('info', "O usuário {$validatedData['name']} foi cadastrado com sucesso.");
+
 	}
 
 	public function edit($id)
