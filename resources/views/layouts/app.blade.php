@@ -16,6 +16,8 @@
 
 	<livewire:styles/>
 
+	@yield('localCSS')
+
 </head>
 <body>
 
@@ -56,5 +58,8 @@
 <livewire:scripts/>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <x-livewire-alert::scripts />
+
+@yield('localScripts')
+
 </body>
 </html>

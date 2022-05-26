@@ -15,7 +15,9 @@ class FullNameRule implements Rule
     {
         $data = explode(' ', $value);
         if (count($data) > 1) {
-            return true;
+			if ($data[1] != '') {
+				return true;
+			}
         } else {
             return false;
         }
