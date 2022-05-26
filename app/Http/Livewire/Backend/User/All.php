@@ -80,8 +80,7 @@ class All extends Component
 			'is_admin' => ['required', 'boolean'],
 		]);
 
-		User::find($this->idUser)
-			->update($validatedData);
+		User::find($this->idUser)->update($validatedData);
 
 		$this->resetFields();
 
@@ -128,6 +127,11 @@ class All extends Component
 
 	}
 
+	public function filter()
+	{
+		
+	}
+
 	public function populate($id)
 	{
 		$this->resetFields();
@@ -146,7 +150,17 @@ class All extends Component
 
 	public function resetFields()
 	{
-		$this->reset();
+		$this->reset([
+			'idUser',
+			'name',
+			'email',
+			'is_active',
+			'is_admin',
+			'avatar',
+			'created_at',
+			'updated_at',
+			'deleted_at',
+		]);
 		$this->resetValidation();
 	}
 
@@ -168,7 +182,7 @@ class All extends Component
     {
 		$users = User::latest()
 			->withTrashed()
-			->paginate(10);
+			->paginate(2);
 
         return view('livewire.backend.user.all', [
 			'users' => $users,

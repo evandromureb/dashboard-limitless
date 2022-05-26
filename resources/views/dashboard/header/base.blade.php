@@ -42,27 +42,6 @@
 
 			</div>
 
-			<div class="header-elements">
-				<div class="breadcrumb">
-
-					@if(route('user') == url()->current())
-
-						<a
-							href="javascript:"
-							class="breadcrumb-elements-item"
-							data-toggle="modal"
-							data-target="#registerModal"
-							wire:click="register()"
-						>
-							<i class="icon-plus-circle2"></i>
-							&nbsp;
-							Cadastrar
-						</a>
-
-					@endif
-
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
