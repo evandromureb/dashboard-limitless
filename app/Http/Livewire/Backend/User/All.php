@@ -177,7 +177,7 @@ class All extends Component
     {
         $users = User::latest()
             ->withTrashed()
-            ->paginate(2);
+            ->paginate();
 
         return view('livewire.backend.user.all', [
             'users' => $users,

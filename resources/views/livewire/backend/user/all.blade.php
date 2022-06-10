@@ -20,7 +20,7 @@
 								data-original-title="Cadastrar novo usuário"
 							>
 								<i class="icon-plus-circle2"></i>
-							</a>
+							</a>{{--
 
 							<a
 								href="javascript:"
@@ -33,7 +33,7 @@
 								data-original-title="Buscar"
 							>
 								<i class="icon-search4"></i>
-							</a>
+							</a>--}}
 
 						</div>
 					</div>
