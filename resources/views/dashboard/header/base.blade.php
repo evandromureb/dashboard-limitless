@@ -5,11 +5,16 @@
 				<h5>
 					<i class="icon-arrow-left52 mr-2"></i>
 					<span class="font-weight-semibold">
-						Título da página
+
+						@if(route('dashboard') == url()->current())
+							Dashboard
+						@endif
+
+						@if(route('user') == url()->current())
+							Gerenciamento de usuários
+						@endif
+
 					</span>
-					<small class="d-block text-muted">
-						Descrição da página
-					</small>
 				</h5>
 			</div>
 		</div>
@@ -17,29 +22,26 @@
 		<div class="breadcrumb-line breadcrumb-line-light header-elements-lg-inline">
 			<div class="breadcrumb breadcrumb-arrow">
 
-				<a href="{{ url('') }}" class="breadcrumb-item">
-					<i class="icon-home2 mr-2"></i>
-					Dashboard
-				</a>
+				@if(route('dashboard') == url()->current())
+					<a href="{{ route('dashboard') }}" class="breadcrumb-item">
+						<i class="icon-home2 mr-2"></i>
+						Dashboard
+					</a>
+				@endif
 
-				<a href="javascript:" class="breadcrumb-item">
-					Breadcrumb 01
-				</a>
-				<span class="breadcrumb-item active">
-					Breadcrumb 02
-				</span>
-			</div>
-
-			<div class="header-elements">
-				<div class="breadcrumb">
-
-					<a href="javascript:" class="breadcrumb-elements-item">
-						<i class="icon-comment-discussion mr-2"></i>
-						Cadastrar
+				@if(route('user') == url()->current())
+					<a href="{{ route('dashboard') }}" class="breadcrumb-item">
+						<i class="icon-home2 mr-2"></i>
+						Dashboard
 					</a>
 
-				</div>
+					<a href="{{ route('user') }}" class="breadcrumb-item">
+						Gerenciamento de usuários
+					</a>
+				@endif
+
 			</div>
+
 		</div>
 	</div>
 </div>

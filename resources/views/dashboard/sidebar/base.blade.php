@@ -6,7 +6,7 @@
 		<div class="sidebar-section sidebar-user my-1">
 			<div class="sidebar-section-body">
 				<div class="media">
-					<a href="{{ url('') }}" class="mr-3">
+					<a href="{{ route('profile') }}" class="mr-3">
 						@if(Auth::user()->avatar)
 							<img src="{{ asset('storage/avatar/default.png') }}" class="rounded-circle" alt="">
 						@else
@@ -45,24 +45,24 @@
 		<div class="sidebar-section">
 			<ul class="nav nav-sidebar" data-nav-type="accordion">
 
-				<li class="nav-item-header">
+				{{--<li class="nav-item-header">
 
 					<div class="text-uppercase font-size-xs line-height-xs">
 						TITLE
 					</div>
 					<i class="icon-menu" title="title"></i>
-				</li>
+				</li>--}}
 
 				<li class="nav-item">
-					<a href="{{ url('') }}" class="nav-link">
+					<a href="{{ route('dashboard')}}" class="nav-link">
 						<i class="icon-home4"></i>
-						<span>
-							Menu 01
+						<span class="text-uppercase">
+							Dashboard
 						</span>
 					</a>
 				</li>
 
-				<li class="nav-item nav-item-submenu">
+				{{--<li class="nav-item nav-item-submenu">
 
 					<a href="javascript:" class="nav-link">
 						<i class="icon-copy"></i>
@@ -80,16 +80,18 @@
 						</li>
 
 					</ul>
-				</li>
+				</li>--}}
 
-				<li class="nav-item">
-					<a href="{{ url('') }}" class="nav-link">
-						<i class="icon-width"></i>
-						<span>
-							Menu 03
-						</span>
-					</a>
-				</li>
+				@if(auth()->user()->is_admin)
+					<li class="nav-item">
+						<a href="{{ route('user') }}" class="nav-link">
+							<i class="icon-users"></i>
+							<span class="text-uppercase">
+								Gerenciamento de usuários
+							</span>
+						</a>
+					</li>
+				@endif
 
 
 			</ul>
